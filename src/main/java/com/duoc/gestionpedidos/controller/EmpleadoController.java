@@ -2,13 +2,9 @@ package com.duoc.gestionpedidos.controller;
 
 import java.util.List;
 
-import com.duoc.gestionpedidos.dto.EmpleadoRequestDTO;
 import com.duoc.gestionpedidos.dto.EmpleadoResponseDTO;
 import com.duoc.gestionpedidos.service.EmpleadoService;
 
-import jakarta.validation.Valid;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
