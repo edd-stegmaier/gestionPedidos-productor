@@ -2,6 +2,8 @@ package com.duoc.gestionpedidos.controller;
 
 import com.duoc.gestionpedidos.dto.GuiaDespachoRequestDTO;
 import com.duoc.gestionpedidos.service.GuiaDespachoService;
+import com.duoc.gestionpedidos.dto.GuiaDespachoResponseDTO;
+import java.util.List;
 
 import jakarta.validation.Valid;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/guias-despacho")
@@ -26,6 +29,23 @@ public class GuiaDespachoController {
     public ResponseEntity<String> testEndpoint() {
         return ResponseEntity.ok("El servicio productor de Guias de Despacho se encuentra funcionando correctamente");
     }
+
+    // obtener lista de guias
+    @GetMapping
+    public ResponseEntity<List<GuiaDespachoResponseDTO>> listarGuiasDespacho(){
+        return ResponseEntity.ok(guiaDespachoService.listarGuiasDeDespacho());
+    }
+
+    //obtener guia por id
+    @GetMapping("/{id}")
+    public ResponseEntity<GuiaDespachoResponseDTO> obtenerGuiaDespachoId(@PathVariable Long id){
+        GuiaDespachoResponseDTO guiaDespacho = guiaDespachoService.obtenerGuiaDeDespachoId(id);
+        if(guiaDespacho == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(guiaDespacho);
+    }
+
 
     @PostMapping
     public ResponseEntity<String> crearGuiaDespacho(@Valid @RequestBody GuiaDespachoRequestDTO guiaDespachoRequestDTO) {

@@ -44,22 +44,5 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleado);
     }
 
-    // registrar nuevo empleado
-    @PostMapping
-    public ResponseEntity<EmpleadoResponseDTO> crearEmpleado(@Valid @RequestBody EmpleadoRequestDTO empleadoRequestDTO){
-        EmpleadoResponseDTO nuevoEmpleado = empleadoService.crearEmpleado(empleadoRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoEmpleado);
-    }
-
-    //eliminar empleado
-    @DeleteMapping("/{id}")
-    public ResponseEntity<EmpleadoResponseDTO> eliminarEmpleado(@PathVariable Long id){
-        boolean eliminado = empleadoService.eliminarEmpleado(id);
-        if (eliminado){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
-    }
-
 
 }

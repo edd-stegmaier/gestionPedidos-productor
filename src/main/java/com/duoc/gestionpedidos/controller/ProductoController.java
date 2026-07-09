@@ -44,22 +44,4 @@ public class ProductoController {
         return ResponseEntity.ok(producto);
     }
 
-    // registrar nuevo producto
-    @PostMapping
-    public ResponseEntity<ProductoResponseDTO> crearProducto(@Valid @RequestBody ProductoRequestDTO productoRequestDTO){
-        ProductoResponseDTO nuevoProducto = productoService.crearProducto(productoRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoProducto);
-    }
-
-    //eliminar producto
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ProductoResponseDTO> eliminarProducto(@PathVariable Long id){
-        boolean eliminado = productoService.eliminarProducto(id);
-        if (eliminado){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
-    }
-
-
 }

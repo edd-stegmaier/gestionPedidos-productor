@@ -44,22 +44,5 @@ public class ClienteController {
         return ResponseEntity.ok(cliente);
     }
 
-    // registrar nuevo cliente
-    @PostMapping
-    public ResponseEntity<ClienteResponseDTO> crearCliente(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO){
-        ClienteResponseDTO nuevoCliente = clienteService.crearCliente(clienteRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoCliente);
-    }
-
-    //eliminar cliente
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ClienteResponseDTO> eliminarCliente(@PathVariable Long id){
-        boolean eliminado = clienteService.eliminarCliente(id);
-        if (eliminado){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
-    }
-
 
 }
