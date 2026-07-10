@@ -17,12 +17,6 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    //test endpoint
-    @GetMapping("/test")
-    public ResponseEntity<String> testEndpoint(){
-        return ResponseEntity.ok("El servicio de Clientes se encuentra funcionando correctamente");
-    }
-
     // obtener lista de clientes
     @GetMapping
     public ResponseEntity<List<ClienteResponseDTO>> listarClientes(){

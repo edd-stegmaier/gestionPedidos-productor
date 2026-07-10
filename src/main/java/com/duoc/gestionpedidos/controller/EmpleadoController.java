@@ -17,13 +17,7 @@ public class EmpleadoController {
     public EmpleadoController(EmpleadoService empleadoService){
         this.empleadoService = empleadoService;
     }
-
-    //test endpoint
-    @GetMapping("/test")
-    public ResponseEntity<String> testEndpoint(){
-        return ResponseEntity.ok("El servicio de Empleados se encuentra funcionando correctamente");
-    }
-
+    
     // obtener lista de empleados
     @GetMapping
     public ResponseEntity<List<EmpleadoResponseDTO>> listarEmpleados(){

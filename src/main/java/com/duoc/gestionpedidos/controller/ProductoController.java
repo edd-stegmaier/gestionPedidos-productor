@@ -18,12 +18,6 @@ public class ProductoController {
         this.productoService = productoService;
     }
 
-    //test endpoint
-    @GetMapping("/test")
-    public ResponseEntity<String> testEndpoint(){
-        return ResponseEntity.ok("El servicio de Productos se encuentra funcionando correctamente");
-    }
-
     // obtener lista de productos
     @GetMapping
     public ResponseEntity<List<ProductoResponseDTO>> listarProductos(){
